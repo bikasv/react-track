@@ -8,26 +8,49 @@ class App extends Component {
     super();
 
     this.state = {
-      show: false
+      show: false,
+      text: 'Full Stack'
     };
 
+    this.xyz = {};
+
     this.show = this.show.bind(this);
+    this.sayHi = this.sayHi.bind(this);
+
+    console.log('Constructing');
   }
+
+  componentWillMount() {
+    console.log('Mounting');
+  }
+
+  componentDidMount = () => {
+    console.log('Mounted');
+  }
+
 
   show () {
     this.setState({
       show: !this.state.show
+    }, function () {
+      console.log('Second', this.state);
     });
+
+    console.log('first', this.state);
   }
 
   sayHi() {
-    alert('Hi');
+    this.setState({
+      text: 'Hello, Full Stack'
+    });
   }
 
   render() {
+    console.log('Rendering');
+
     return (
       <div className="App">
-        <Header text='Full Stack' />
+        <Header {...this.state} />
         {this.state.show ?
           <Test /> :
           null
