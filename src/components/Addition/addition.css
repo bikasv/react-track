@@ -1,0 +1,43 @@
+fieldset {
+  width: 40%;
+  margin: 30px auto;
+  text-align: left;
+  min-width: 320px;
+}
+
+legend {
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 1.5em;
+}
+
+.form-label {
+  margin: 20px 0 0;
+  font-size: 1.25em;
+}
+
+.error-label {
+  color: red;
+  margin: 0;
+}
+
+.form-input {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 80%;
+  margin: 10px 0;
+}
+
+.form-button {
+  border: 0;
+  box-shadow: none;
+  background-color: #000;
+  padding: 10px 30px;
+  color: #fff;
+  font-size: 1.25em;
+  min-width: 160px;
+  cursor: pointer;
+  margin: 20px 0;
+}
