@@ -4,7 +4,7 @@ import './test.css';
 
 export default class Test extends PureComponent {
   render() {
-    if (!this.props.value) {
+    if (this.props.value === null) {
       return null;
     }
 

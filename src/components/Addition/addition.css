@@ -13,11 +13,13 @@ legend {
 }
 
 .form-label {
+  display: block;
   margin: 20px 0 0;
   font-size: 1.25em;
 }
 
 .error-label {
+  display: block;
   color: red;
   margin: 0;
 }

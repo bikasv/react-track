@@ -33,7 +33,7 @@ class Addition extends PureComponent {
       submit: true
     });
 
-    if (input1 !== null && input2 !== null) {
+    if (input1 && input2) {
       const value1 = parseInt(input1, 10);
       const value2 = parseInt(input2, 10);
       this.props.onSubmit(value1 + value2);
@@ -48,14 +48,14 @@ class Addition extends PureComponent {
         <fieldset>
           <legend>Input numbers to add</legend>
 
-          <p
+          <label
             className="form-label"
             htmlFor="input1"
           >
             Input 1
-          </p>
-          {submit && [null, ''].includes(input1) ?
-            <p className="error-label">Please input the value before proceeding</p> :
+          </label>
+          {submit && !input1 ?
+            <label className="error-label">Please input the value before proceeding</label> :
             null
           }
           <input
@@ -65,14 +65,14 @@ class Addition extends PureComponent {
             type="number"
           />
 
-          <p
+          <label
             className="form-label"
             htmlFor="input2"
           >
             Input 2
-          </p>
-          {submit && [null, ''].includes(input2) ?
-            <p className="error-label">Please input the value before proceeding</p> :
+          </label>
+          {submit && !input2 ?
+            <label className="error-label">Please input the value before proceeding</label> :
             null
           }
           <input
