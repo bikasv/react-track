@@ -8,6 +8,7 @@ class App extends Component {
 
     this.state = {
       value: null,
+      history: [],
       text: 'React Session'
     };
 
@@ -15,8 +16,13 @@ class App extends Component {
   }
 
   onSubmit(value) {
+    const history = this.state.history;
+    history.unshift(value);
+    history.splice(3);
+
     this.setState({
-      value
+      value,
+      history
     });
   }
 
@@ -25,7 +31,10 @@ class App extends Component {
       <div className="App">
         <Header {...this.state} />
         <Addition onSubmit={this.onSubmit} />
-        <Test value={this.state.value} />
+        <Test
+          value={this.state.value}
+          history={this.state.history}
+        />
       </div>
     );
   }

@@ -16,15 +16,21 @@ export default class Test extends PureComponent {
         >
           {this.props.value}
         </p>
+
+        {this.props.history.map((entry, key) => (
+          <div key={key}>{entry}</div>
+        ))}
       </div>
     );
   }
 }
 
 Test.propTypes = {
-  value: PropTypes.number
+  value: PropTypes.number,
+  history: PropTypes.array
 };
 
 Test.defaultProps = {
-  value: null
+  value: null,
+  history: []
 };

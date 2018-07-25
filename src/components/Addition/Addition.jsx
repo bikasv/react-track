@@ -7,6 +7,7 @@ class Addition extends PureComponent {
     super(props);
 
     this.state = {
+      operation: 'add',
       input1: null,
       input2: null,
       error: '',
@@ -14,7 +15,16 @@ class Addition extends PureComponent {
     };
 
     this.updateValue = this.updateValue.bind(this);
+    this.changeOperation = this.changeOperation.bind(this);
     this.submit = this.submit.bind(this);
+  }
+
+  changeOperation(evt) {
+    const value = evt.target.value;
+
+    this.setState({
+      operation: value
+    });
   }
 
   updateValue(evt) {
@@ -26,8 +36,23 @@ class Addition extends PureComponent {
     });
   }
 
+  performOperation(value1, value2, operation) {
+    switch (operation) {
+      case 'add':
+        return value1 + value2;
+      case 'subtract':
+        return value1 - value2;
+      case 'multiply':
+        return value1 * value2;
+      case 'divide':
+        return value1 / value2;
+      default:
+        return value1 + value2;
+    }
+  }
+
   submit() {
-    const {input1, input2} = this.state;
+    const {input1, input2, operation} = this.state;
 
     this.setState({
       submit: true
@@ -36,7 +61,7 @@ class Addition extends PureComponent {
     if (input1 && input2) {
       const value1 = parseInt(input1, 10);
       const value2 = parseInt(input2, 10);
-      this.props.onSubmit(value1 + value2);
+      this.props.onSubmit(this.performOperation(value1, value2, operation));
     }
   }
 
@@ -47,7 +72,12 @@ class Addition extends PureComponent {
       <div>
         <fieldset>
           <legend>Input numbers to add</legend>
-
+          <select onChange={this.changeOperation}>
+            <option value="add">Add</option>
+            <option value="subtract">subtract</option>
+            <option value="multiply">multiply</option>
+            <option value="divide">divide</option>
+          </select>
           <label
             className="form-label"
             htmlFor="input1"
