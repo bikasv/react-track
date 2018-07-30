@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './addition.css';
+import doOperation from '../../actions/app-actions';
 
 class Addition extends PureComponent {
   constructor(props) {
@@ -36,21 +38,6 @@ class Addition extends PureComponent {
     });
   }
 
-  performOperation(value1, value2, operation) {
-    switch (operation) {
-      case 'add':
-        return value1 + value2;
-      case 'subtract':
-        return value1 - value2;
-      case 'multiply':
-        return value1 * value2;
-      case 'divide':
-        return value1 / value2;
-      default:
-        return value1 + value2;
-    }
-  }
-
   submit() {
     const {input1, input2, operation} = this.state;
 
@@ -61,7 +48,7 @@ class Addition extends PureComponent {
     if (input1 && input2) {
       const value1 = parseInt(input1, 10);
       const value2 = parseInt(input2, 10);
-      this.props.onSubmit(this.performOperation(value1, value2, operation));
+      this.props.onSubmit(this.props.doOperation(value1, value2, operation));
     }
   }
 
@@ -124,12 +111,20 @@ class Addition extends PureComponent {
   }
 }
 
-export default Addition;
-
 Addition.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  doOperation: PropTypes.func
 };
 
 Addition.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  doOperation: () => {}
 };
+
+const mapDispatchToProps = (dispatch) => {
+  doOperation: (value1, value2, operation) => dispatch(doOperation(value1, value2, operation));
+}
+
+export default connect(null, mapDispatchToProps)(Addition);
+
+
