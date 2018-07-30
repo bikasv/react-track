@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './addition.css';
-import doOperation from '../../actions/app-actions';
+import { doOperation } from '../../actions/app-actions';
 
 class Addition extends PureComponent {
   constructor(props) {
@@ -121,9 +121,9 @@ Addition.defaultProps = {
   doOperation: () => {}
 };
 
-const mapDispatchToProps = (dispatch) => {
-  doOperation: (value1, value2, operation) => dispatch(doOperation(value1, value2, operation));
-}
+const mapDispatchToProps = (dispatch) => ({
+  doOperation: (value1, value2, operation) => dispatch(doOperation(value1, value2, operation))
+});
 
 export default connect(null, mapDispatchToProps)(Addition);
 
