@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './test.css';
 
-export default class Test extends PureComponent {
+class Test extends PureComponent {
   render() {
-    if (this.props.value === null) {
-      return null;
-    }
+    // if (this.props.result === null) {
+    //   return null;
+    // }
 
     return (
       <div>
@@ -14,7 +15,7 @@ export default class Test extends PureComponent {
         <p
           className="result"
         >
-          {this.props.value}
+          {this.props.result}
         </p>
 
         {this.props.history.map((entry, key) => (
@@ -27,10 +28,18 @@ export default class Test extends PureComponent {
 
 Test.propTypes = {
   value: PropTypes.number,
-  history: PropTypes.array
+  history: PropTypes.array,
+  result: PropTypes.number
 };
 
 Test.defaultProps = {
   value: null,
-  history: []
+  history: [],
+  result: null
 };
+
+const mapStateToProps = (state) => ({
+  result: state.app.result
+})
+
+export default connect(mapStateToProps)(Test);

@@ -8,32 +8,32 @@ class App extends Component {
 
     this.state = {
       value: null,
-      history: [],
-      text: 'React Session'
+      anything: [],
+      text: 'React Session',
+      result: null
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(value) {
-    const history = this.state.history;
-    history.unshift(value);
-    history.splice(3);
+  // onSubmit(value) {
+  //   const history = this.state.history;
+  //   history.unshift(value);
+  //   history.splice(3);
 
-    this.setState({
-      value,
-      history
-    });
-  }
+  //   this.setState({
+  //     value,
+  //     history
+  //   });
+  // }
 
   render() {
     return (
       <div className="App">
         <Header {...this.state} />
-        <Addition onSubmit={this.onSubmit} />
+        <Addition />
         <Test
-          value={this.state.value}
-          history={this.state.history}
+          history={this.state.anything}
         />
       </div>
     );

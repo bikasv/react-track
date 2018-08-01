@@ -14,22 +14,24 @@ export default function actions(state = initialState, action = {}) {
      }
     case DO_OPERATION: {
       const {value1, value2} = action.payload;
+      const retObj = Object.assign({}, state);
+
       switch (action.payload.operation) {
         case 'add': {
-          state.result = value1 + value2;
+          retObj.result = value1 + value2;
         }
         case 'subtract': {
-          state.result = value1 - value2;
+          retObj.result = value1 - value2;
         }
         case 'multiply': {
-          state.result = value1 * value2;
+          retObj.result = value1 * value2;
         }
         case 'divide': {
-          state.result = value1 / value2;
+          retObj.result = value1 / value2;
         }
-        default: return state;
+        default: retObj.result = null;
       }
-      return state;
+      return retObj;
     }
     default:
      return state;

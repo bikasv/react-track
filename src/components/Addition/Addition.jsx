@@ -48,7 +48,7 @@ class Addition extends PureComponent {
     if (input1 && input2) {
       const value1 = parseInt(input1, 10);
       const value2 = parseInt(input2, 10);
-      this.props.onSubmit(this.props.doOperation(value1, value2, operation));
+      this.props.doOperation(value1, value2, operation);
     }
   }
 
