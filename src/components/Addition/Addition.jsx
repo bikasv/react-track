@@ -10,8 +10,8 @@ class Addition extends PureComponent {
 
     this.state = {
       operation: 'add',
-      input1: null,
-      input2: null,
+      input1: '',
+      input2: '',
       error: '',
       submit: false
     };
@@ -80,6 +80,7 @@ class Addition extends PureComponent {
             id="input1"
             onChange={this.updateValue}
             type="number"
+            value={this.state.input1}
           />
 
           <label
@@ -97,6 +98,7 @@ class Addition extends PureComponent {
             id="input2"
             onChange={this.updateValue}
             type="number"
+            value={this.state.input2}
           />
 
           <button

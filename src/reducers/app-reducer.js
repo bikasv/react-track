@@ -7,6 +7,13 @@ const initialState = {
   history: []
 };
 
+const handleHistory = (array, value) => {
+  array.unshift(value);
+  array.splice(3);
+
+  return array;
+}
+
 export default function actions(state = initialState, action = {}) {
   switch (action.type) {
     case SET_LOADING: {
@@ -21,25 +28,28 @@ export default function actions(state = initialState, action = {}) {
         case 'add': {
           const result = value1 + value2;
           retObj.result = result;
-          retObj.history.push(result);
+          retObj.history= handleHistory(retObj.history, result);
+
           return retObj;
         }
         case 'subtract': {
           const result = value1 - value2;
           retObj.result = result;
-          retObj.history.push(result);
+          retObj.history= handleHistory(retObj.history, result);
+
           return retObj;
         }
         case 'multiply': {
           const result = value1 * value2;
           retObj.result = result;
-          retObj.history.push(result);
+          retObj.history= handleHistory(retObj.history, result);
           return retObj;
         }
         case 'divide': {
           const result = value1 / value2;
           retObj.result = result;
-          retObj.history.push(result);
+          retObj.history= handleHistory(retObj.history, result);
+
           return retObj;
         }
         default: {
