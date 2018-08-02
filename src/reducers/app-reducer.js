@@ -3,7 +3,8 @@ import { SET_LOADING, DO_OPERATION } from '../actions/action-types';
 // set initial state
 const initialState = {
   loading: false,
-  result: null
+  result: null,
+  history: []
 };
 
 export default function actions(state = initialState, action = {}) {
@@ -18,20 +19,33 @@ export default function actions(state = initialState, action = {}) {
 
       switch (action.payload.operation) {
         case 'add': {
-          retObj.result = value1 + value2;
+          const result = value1 + value2;
+          retObj.result = result;
+          retObj.history.push(result);
+          return retObj;
         }
         case 'subtract': {
-          retObj.result = value1 - value2;
+          const result = value1 - value2;
+          retObj.result = result;
+          retObj.history.push(result);
+          return retObj;
         }
         case 'multiply': {
-          retObj.result = value1 * value2;
+          const result = value1 * value2;
+          retObj.result = result;
+          retObj.history.push(result);
+          return retObj;
         }
         case 'divide': {
-          retObj.result = value1 / value2;
+          const result = value1 / value2;
+          retObj.result = result;
+          retObj.history.push(result);
+          return retObj;
         }
-        default: retObj.result = null;
+        default: {
+          return retObj;
+        }
       }
-      return retObj;
     }
     default:
      return state;

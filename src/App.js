@@ -7,34 +7,16 @@ class App extends Component {
     super();
 
     this.state = {
-      value: null,
-      anything: [],
-      text: 'React Session',
-      result: null
+      text: 'React Session'
     };
-
-    // this.onSubmit = this.onSubmit.bind(this);
   }
-
-  // onSubmit(value) {
-  //   const history = this.state.history;
-  //   history.unshift(value);
-  //   history.splice(3);
-
-  //   this.setState({
-  //     value,
-  //     history
-  //   });
-  // }
 
   render() {
     return (
       <div className="App">
         <Header {...this.state} />
         <Addition />
-        <Test
-          history={this.state.anything}
-        />
+        <Test />
       </div>
     );
   }

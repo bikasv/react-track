@@ -39,6 +39,7 @@ Test.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  history: state.app.history,
   result: state.app.result
 })
 
