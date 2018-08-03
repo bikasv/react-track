@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Header, Test, Addition} from './components';
+import {Header, Addition} from './components';
 
 class App extends Component {
   constructor() {
@@ -16,7 +16,6 @@ class App extends Component {
       <div className="App">
         <Header {...this.state} />
         <Addition />
-        <Test />
       </div>
     );
   }

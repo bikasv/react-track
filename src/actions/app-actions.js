@@ -10,12 +10,13 @@ export const stopLoading = () => ({
   payload: false,
 });
 
-export const doOperation = (value1, value2, operation) => ({
+export const doOperation = (value1, value2, operation, callback) => ({
   type: DO_OPERATION,
   payload: {
     value1,
     value2,
-    operation
+    operation,
+    callback
   },
 });
 

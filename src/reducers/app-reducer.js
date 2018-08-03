@@ -30,6 +30,7 @@ export default function actions(state = initialState, action = {}) {
           retObj.result = result;
           retObj.history= handleHistory(retObj.history, result);
 
+          action.payload.callback && action.payload.callback();
           return retObj;
         }
         case 'subtract': {

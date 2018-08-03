@@ -21,6 +21,8 @@ class Test extends PureComponent {
         {this.props.history.map((entry, key) => (
           <div key={key}>{entry}</div>
         ))}
+
+        <a href="#/">Go back</a>
       </div>
     );
   }

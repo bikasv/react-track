@@ -48,7 +48,8 @@ class Addition extends PureComponent {
     if (input1 && input2) {
       const value1 = parseInt(input1, 10);
       const value2 = parseInt(input2, 10);
-      this.props.doOperation(value1, value2, operation);
+      this.props.doOperation(value1, value2, operation, () => window.location.assign('#/result'));
+      // window.location.assign('#/result');
     }
   }
 
@@ -124,7 +125,7 @@ Addition.defaultProps = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  doOperation: (value1, value2, operation) => dispatch(doOperation(value1, value2, operation))
+  doOperation: (value1, value2, operation, callback) => dispatch(doOperation(value1, value2, operation, callback))
 });
 
 export default connect(null, mapDispatchToProps)(Addition);

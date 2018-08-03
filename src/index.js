@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
 import './index.css';
-import App from './App';
+import Routes from './routes';
 
 let composeEnhancers = compose;
 if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
@@ -20,7 +20,7 @@ const store = createStore(rootReducer, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App store={store} />
+    <Routes store={store} />
   </Provider>,
   document.getElementById('root')
 );
